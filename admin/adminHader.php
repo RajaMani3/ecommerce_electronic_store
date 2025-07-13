@@ -10,10 +10,11 @@
 <?php
     include '../lib/Session.php';
     Session::checkAdminSession();
-    include '../classes/Message.php';
-    include '../classes/Product.php';
-    include '../classes/Cart.php';
-    include '../classes/User.php';
+require_once '../classes/Message.php';
+require_once '../classes/Product.php';
+require_once '../classes/Cart.php';
+require_once '../classes/User.php';
+
     include_once '../helpers/Formate.php';
     $messageobject = new Message();
     $productObject = new Product();

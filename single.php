@@ -267,9 +267,30 @@
     <?php endwhile; ?>
 <?php endif; ?>
 
-    <?php if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']) && (Session::get("userLogin"))  ): ?>
-        <?php $allCategoryObject->inseertProductReviewByCustomerId(Session::get("userId"), $_POST['Name'], $_POST['Email'], $_POST['Review'], $_POST['rate'], $productId, $_POST['Telephone']);  ?>
-    <?php endif;  ?>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']) && Session::get("userLogin")) {
+    // get logged in user's ID
+    $userId = Session::get("userId");
+
+    // get data from form and escape them for safety
+    $name    = mysqli_real_escape_string($databaseObject->link, $_POST['Name']);
+    $email   = mysqli_real_escape_string($databaseObject->link, $_POST['Email']);
+    $review  = mysqli_real_escape_string($databaseObject->link, $_POST['Review']);
+    $rate    = (int) $_POST['rate']; // force to integer
+    $phone   = mysqli_real_escape_string($databaseObject->link, $_POST['Telephone']);
+
+    // call your method to insert review
+    $allCategoryObject->inseertProductReviewByCustomerId($userId, $name, $email, $review, $rate, $productId, $phone);
+
+    // OPTIONAL: debug to see what was submitted
+    echo "<pre>Form submitted! Data:";
+    print_r($_POST);
+    echo "</pre>";
+    die();
+}
+?>
+
+
 
 <?php $proInfo = $productObject->getProductById($productId); if ($proInfo): ?>
     <?php while ($info = $proInfo->fetch_assoc()): ?>

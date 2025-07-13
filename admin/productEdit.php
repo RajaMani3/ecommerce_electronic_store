@@ -9,9 +9,10 @@
 
 <?php
     include 'adminHader.php';
-    include '../classes/Product.php';
-    include '../classes/Category.php';
-    include '../classes/Brand.php';
+   require_once '../classes/Product.php';
+require_once '../classes/Category.php';
+require_once '../classes/Brand.php';
+
 ?>
 <?php
     $categoryObject = new Category();

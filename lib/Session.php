@@ -8,6 +8,7 @@
  */
 ?>
 <?php
+if (class_exists('Session')) return;
 
     class Session
     {
