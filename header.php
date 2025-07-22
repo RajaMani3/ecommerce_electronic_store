@@ -241,9 +241,9 @@
                             <li><a href="about.php">About Us</a></li>
                             <li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <?php if (Session::get("userLogin")): ?>
+                                    <!-- <?php if (Session::get("userLogin")): ?>
                                         <li><a href="cart.php">My Cart</a></li>
-                                    <?php endif; ?>
+                                    <?php endif; ?> -->
                                     <li><a href="mail.php">Mail Us</a></li>
                                 </ul>
                             </li>
